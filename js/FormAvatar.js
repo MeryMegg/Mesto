@@ -1,32 +1,18 @@
-class FormEditProfile {
+class FormAvatar {
   static _template = document
-    .querySelector("#form-profile-template")
+    .querySelector("#avatar-template")
     .content.querySelector(".popup__content");
 
-  constructor(
-    userName,
-    userAbout,
-    addUserInfo,
-    setListener,
-    removeListener,
-    renderLoading
-  ) {
-    this._userName = userName;
-    this._userAbout = userAbout;
-    this._addUserInfo = addUserInfo;
+  constructor(addUserAvatar, setListener, removeListener, renderLoading) {
+    this._addUserAvatar = addUserAvatar;
     this._setListener = setListener;
     this._removeListener = removeListener;
     this._renderLoading = renderLoading;
   }
 
   createContent() {
-    this._view = FormEditProfile._template.cloneNode(true);
-    this._view.querySelector(
-      "[name = username]"
-    ).value = this._userName.textContent;
-    this._view.querySelector(
-      "[name = about]"
-    ).value = this._userAbout.textContent;
+    this._view = FormAvatar._template.cloneNode(true);
+    this._view.querySelector("[name = link]").style.backgroundImage = "";
     this.cardElement = this._view;
     this._setEventListeners();
     return this.cardElement;
@@ -49,10 +35,9 @@ class FormEditProfile {
   _submitHandler = (event) => {
     event.preventDefault();
 
-    const name = this._view.querySelector("[name = username]");
-    const about = this._view.querySelector("[name = about]");
-    const userInfo = { name: name.value, about: about.value };
-    this._addUserInfo(userInfo);
+    const link = this._view.querySelector("[name = link]");
+    const userInfo = { avatar: link.value };
+    this._addUserAvatar(userInfo);
 
     this._renderLoading(true, this._view.querySelector(".button"));
   };

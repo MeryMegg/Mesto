@@ -16,10 +16,10 @@
     </header>
     <div class="profile root__section">
       <div class="user-info">
-        <div class="user-info__photo"></div>
+        <div class="user-info__photo" style="background-image: url()"></div>
         <div class="user-info__data">
-          <h1 class="user-info__name">Jaques Causteau</h1>
-          <p class="user-info__about">Sailor, Researcher</p>
+          <h1 class="user-info__name"></h1>
+          <p class="user-info__about"></p>
           <button class="button button_size_small" id="edit">
             Edit
           </button>
@@ -36,16 +36,21 @@
       <!--! Здесь будет содержимое Popup -->
     </div>
 
+    <!-- Можно лучше: Присутсвует незакрытый div -->
+
     <!-- Templates -->
 
     <template id="card-template" style="display: none;">
       <div class="place-card">
-        <div class="place-card__image" style="background-image: url();">
+        <div class="place-card__image" style="background-image: url()">
           <button class="place-card__delete-icon"></button>
         </div>
         <div class="place-card__description">
           <h3 class="place-card__name"></h3>
-          <button class="place-card__like-icon"></button>
+          <div class="place-card__like">
+            <button class="place-card__like-icon"></button>
+            <p class="place-card__like-count">0</p>
+          </div>
         </div>
       </div>
     </template>
@@ -58,6 +63,7 @@
           <input type="text" name="place" class="popup__input" required minlength="2" placeholder="Название" />
           <span id="place-error" class="error"></span>
           <input type="url" name="link" class="popup__input" required placeholder="Ссылка на картинку" />
+          <!-- Можно лучше: убрать дублирующийся id -->
           <span id="link-error" class="error"></span>
           <button class="button popup__button_type_add popup__button popup__button_disable" disabled='true'>
             +
@@ -89,7 +95,23 @@
       </div>
     </template>
 
-    <script src="js/initialCards.js"></script>
+    <template id="avatar-template" style="display: none;">
+      <div class="popup__content popup__content_type_form">
+        <img src="./images/close.svg" alt="" class="popup__close" id="card" />
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" name="avatar" novalidate>
+          <input type="url" name="link" class="popup__input" required placeholder="Ссылка на аватар" />
+          <!-- Можно лучше: убрать дублирующийся id -->
+          <span id="link-error" class="error"></span>
+          <button class="button popup__button_type_edit popup__button popup__button_disable" disabled='true'>
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </template>
+
+    <script src="js/config.js"></script>
+    <script src="js/Api.js"></script>
     <script src="js/errorMessages.js"></script>
     <script src="js/FormValidator.js"></script>
     <script src="js/Card.js"></script>
@@ -97,6 +119,7 @@
     <script src="js/CardsList.js"></script>
     <script src="js/Popup.js"></script>
     <script src="js/FormAddCard.js"></script>
+    <script src="js/FormAvatar.js"></script>
     <script src="js/FormEditProfile.js"></script>
     <script src="js/ZoomImage.js"></script>
     <script src="js/script.js"></script>

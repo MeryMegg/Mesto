@@ -4,8 +4,9 @@
   border: none;
   width: 21px;
   height: 19px;
+  margin-bottom: 3px;
   cursor: pointer;
-  transition: transform .3s linear;
+  transition: transform 0.3s linear;
 }
 
 .place-card__like-icon_liked {

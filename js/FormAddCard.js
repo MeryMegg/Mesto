@@ -3,11 +3,11 @@ class FormAddCard {
     .querySelector("#form-card-template")
     .content.querySelector(".popup__content");
 
-  constructor(addCardUser, setListener, removeListener, closePopup) {
+  constructor(addCardUser, setListener, removeListener, renderLoading) {
     this._addCardUser = addCardUser;
     this._setListener = setListener;
     this._removeListener = removeListener;
-    this._closePopup = closePopup;
+    this._renderLoading = renderLoading;
   }
 
   createContent() {
@@ -36,12 +36,12 @@ class FormAddCard {
   _submitHandler = (event) => {
     event.preventDefault();
 
-    const place = this._view.querySelector("[name = place]");
+    const name = this._view.querySelector("[name = place]");
     const link = this._view.querySelector("[name = link]");
-    const card = { place: place.value, link: link.value };
+    const card = { name: name.value, link: link.value };
 
     this._addCardUser(card);
 
-    this._closePopup();
+    this._renderLoading(true, this._view.querySelector(".button"));
   };
 }
