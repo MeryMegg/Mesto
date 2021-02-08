@@ -19,7 +19,7 @@
         <div class="user-info__photo"></div>
         <div class="user-info__data">
           <h1 class="user-info__name">Jaques Causteau</h1>
-          <p class="user-info__job">Sailor, Researcher</p>
+          <p class="user-info__about">Sailor, Researcher</p>
           <button class="button button_size_small" id="edit">
             Edit
           </button>
@@ -30,21 +30,27 @@
       </div>
     </div>
     <div class="places-list root__section">
-      <!-- Пример вёрстки карточки: -->
+      <!--! Здесь будут карточки! -->
+    </div>
+    <div class="popup">
+      <!--! Здесь будет содержимое Popup -->
+    </div>
 
-      <!-- <div class="place-card">
-        <div class="place-card__image" style="background-image: url(https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg)">
+    <!-- Templates -->
+
+    <template id="card-template" style="display: none;">
+      <div class="place-card">
+        <div class="place-card__image" style="background-image: url();">
           <button class="place-card__delete-icon"></button>
         </div>
         <div class="place-card__description">
-          <h3 class="place-card__name">Камчатка</h3>
+          <h3 class="place-card__name"></h3>
           <button class="place-card__like-icon"></button>
         </div>
-      </div> -->
+      </div>
+    </template>
 
-      <!-- конец примера. -->
-    </div>
-    <div class="popup popup_type_add-card">
+    <template id="form-card-template" style="display: none;">
       <div class="popup__content popup__content_type_form">
         <img src="./images/close.svg" alt="" class="popup__close" id="card" />
         <h3 class="popup__title">Новое место</h3>
@@ -53,41 +59,47 @@
           <span id="place-error" class="error"></span>
           <input type="url" name="link" class="popup__input" required placeholder="Ссылка на картинку" />
           <span id="link-error" class="error"></span>
-          <button class="button popup__button_type_add popup__button popup__button_disable" disabled>
+          <button class="button popup__button_type_add popup__button popup__button_disable" disabled='true'>
             +
           </button>
         </form>
       </div>
-    </div>
+    </template>
 
-    <div class="popup popup_type_edit-profile">
+    <template id="form-profile-template" style="display: none;">
       <div class="popup__content popup__content_type_form">
         <img src="./images/close.svg" alt="" class="popup__close" id="profile" />
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="profile" novalidate>
-          <input type="text" name="name" class="popup__input" minlength="2" required placeholder="Имя" />
-          <span id="name-error" class="error"></span>
-          <input type="text" name="job" class="popup__input" minlength="2" required placeholder="О себе" />
-          <span id="job-error" class="error"></span>
+          <input type="text" name="username" class="popup__input" minlength="2" required placeholder="Имя" />
+          <span id="username-error" class="error"></span>
+          <input type="text" name="about" class="popup__input" minlength="2" required placeholder="О себе" />
+          <span id="about-error" class="error"></span>
           <button class="button popup__button_type_edit popup__button popup__button_enable">
             Сохранить
           </button>
         </form>
       </div>
-    </div>
+    </template>
 
-    <div class="popup popup_type_image">
+    <template id="image-template" style="display: none;">
       <div class="popup__content popup__content_type_image">
         <img src="./images/close.svg" alt="" class="popup__close" id="img" />
-        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg" alt=""
-          class="popup__image" />
+        <img src="" alt="" class="popup__image" />
       </div>
-    </div>
-  </div>
-  <script src="js/initialCards.js"></script>
-  <script src="js/validation.js"></script>
-  <script src="js/popup.js"></script>
-  <script src="js/script.js"></script>
+    </template>
+
+    <script src="js/initialCards.js"></script>
+    <script src="js/errorMessages.js"></script>
+    <script src="js/FormValidator.js"></script>
+    <script src="js/Card.js"></script>
+    <script src="js/UserInfo.js"></script>
+    <script src="js/CardsList.js"></script>
+    <script src="js/Popup.js"></script>
+    <script src="js/FormAddCard.js"></script>
+    <script src="js/FormEditProfile.js"></script>
+    <script src="js/ZoomImage.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

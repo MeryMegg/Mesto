@@ -1,4 +1,4 @@
-const initialCards = [
+const cards = [
   {
     place: "Архыз",
     link:
