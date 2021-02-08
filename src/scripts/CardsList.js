@@ -1,11 +1,13 @@
-class CardsList {
+import { config } from "./config.js";
+export default class CardsList {
   constructor(
     config,
     container,
     createCard,
     createPopupImage,
     instanceApi,
-    renderLoading
+    renderLoading,
+    cardTemplate
   ) {
     this._config = config;
     this._container = container;
@@ -13,6 +15,7 @@ class CardsList {
     this._createPopupImage = createPopupImage;
     this._instanceApi = instanceApi;
     this._renderLoading = renderLoading;
+    this._cardTemplate = cardTemplate;
   }
 
   addCard(card) {
@@ -21,7 +24,8 @@ class CardsList {
         card,
         this._config,
         this._createPopupImage,
-        this._instanceApi
+        this._instanceApi,
+        this._cardTemplate
       )
     );
   }
@@ -31,17 +35,12 @@ class CardsList {
       .createCards(card)
       .then((res) => {
         this.addCard(res);
-        this._renderLoading(false);
       })
       .catch((err) => {
-        /**
-         * Можно лучше:
-         * Перенести this._renderLoading(false); в finally
-         */
-        this._renderLoading(false);
         console.log(err);
         alert("Что-то пошло не так... Повторите попытку...");
-      });
+      })
+      .finally(() => this._renderLoading(false));
   };
 
   render = (cards) => {

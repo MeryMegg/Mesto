@@ -1,4 +1,4 @@
-class Popup {
+export default class Popup {
   constructor(popup, removeContentPopupListeners) {
     this._popup = popup;
     this._removeContentPopupListeners = removeContentPopupListeners;

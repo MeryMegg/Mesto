@@ -1,4 +1,5 @@
-class FormValidator {
+import { errorMessages } from "./errorMessages.js";
+export default class FormValidator {
   constructor(errorMessages) {
     this._errorMessages = errorMessages;
     this._inputHandler = this._inputHandler.bind(this);

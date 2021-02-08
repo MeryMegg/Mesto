@@ -1,4 +1,4 @@
-class ZoomImage {
+export default class ZoomImage {
   static _template = document
     .querySelector("#image-template")
     .content.querySelector(".popup__content");

@@ -1,4 +1,4 @@
-class FormAvatar {
+export default class FormAvatar {
   static _template = document
     .querySelector("#avatar-template")
     .content.querySelector(".popup__content");
@@ -12,7 +12,7 @@ class FormAvatar {
 
   createContent() {
     this._view = FormAvatar._template.cloneNode(true);
-    this._view.querySelector("[name = link]").style.backgroundImage = "";
+    this._view.querySelector("[name = url]").style.backgroundImage = "";
     this.cardElement = this._view;
     this._setEventListeners();
     return this.cardElement;
@@ -35,7 +35,7 @@ class FormAvatar {
   _submitHandler = (event) => {
     event.preventDefault();
 
-    const link = this._view.querySelector("[name = link]");
+    const link = this._view.querySelector("[name = url]");
     const userInfo = { avatar: link.value };
     this._addUserAvatar(userInfo);
 

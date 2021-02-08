@@ -1,4 +1,4 @@
-class FormAddCard {
+export default class FormAddCard {
   static _template = document
     .querySelector("#form-card-template")
     .content.querySelector(".popup__content");

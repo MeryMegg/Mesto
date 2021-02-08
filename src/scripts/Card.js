@@ -1,19 +1,16 @@
-class Card {
-  static _template = document
-    .querySelector("#card-template")
-    .content.querySelector(".place-card");
-
-  constructor(card, config, createPopupImage, instanceApi) {
+export default class Card {
+  constructor(card, config, createPopupImage, instanceApi, cardTemplate) {
     this._card = card;
     this._config = config;
     this._createPopupImage = createPopupImage;
     this._instanceApi = instanceApi;
+    this._template = cardTemplate;
 
     this._isLiked = this._isLiked.bind(this);
   }
 
   createPlaceCard() {
-    this._view = Card._template.cloneNode(true);
+    this._view = this._template.cloneNode(true);
     this._view.querySelector(".place-card__name").textContent = this._card.name;
     this._view.querySelector(
       ".place-card__image"
@@ -98,12 +95,7 @@ class Card {
     this._createPopupImage(url);
   };
 
-  _confirmDelete = () => {
-    /**
-     * Можно лучше:
-     * Добавить event в параметры функции
-     * Использование window.event уменьшает надежность кода.
-     */
+  _confirmDelete = (event) => {
     event.stopPropagation();
     if (confirm("Вы действительно хотите удалить эту карточку?")) {
       this.deleteUserCard(this._card._id);

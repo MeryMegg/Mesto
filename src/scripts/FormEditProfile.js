@@ -1,4 +1,4 @@
-class FormEditProfile {
+export default class FormEditProfile {
   static _template = document
     .querySelector("#form-profile-template")
     .content.querySelector(".popup__content");

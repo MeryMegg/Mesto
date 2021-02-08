@@ -1,4 +1,4 @@
-class UserInfo {
+export default class UserInfo {
   constructor(
     config,
     userName,
@@ -22,13 +22,12 @@ class UserInfo {
       .updateUserInfo({ name: userInfo.name, about: userInfo.about })
       .then((res) => {
         this.setUserInfo(res);
-        this._renderLoading(false);
       })
       .catch((err) => {
-        this._renderLoading(false);
         console.log(err);
         alert("Что-то пошло не так... Повторите попытку...");
-      });
+      })
+      .finally(() => this._renderLoading(false));
   };
 
   updateUserAvatar = (userInfo) => {
@@ -36,13 +35,12 @@ class UserInfo {
       .updateUserAvatar({ avatar: userInfo.avatar })
       .then((res) => {
         this.setUserInfo(res);
-        this._renderLoading(false);
       })
       .catch((err) => {
-        this._renderLoading(false);
         console.log(err);
         alert("Что-то пошло не так... Повторите попытку...");
-      });
+      })
+      .finally(() => this._renderLoading(false));
   };
 
   setUserInfo(userInfo) {

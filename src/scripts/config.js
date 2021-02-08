@@ -1,5 +1,7 @@
-const config = {
-  baseUrl: "https://nomoreparties.co/cohort11",
+const serverUrl =
+  NODE_ENV === "development" ? "http://nomoreparties.co" : "https://nomoreparties.co";
+export const config = {
+  baseUrl: `${serverUrl}/cohort11`,
   pathCards: "cards",
   pathUsersMe: "users/me",
   pathLike: "like",

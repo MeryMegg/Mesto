@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>" />
+  </head>
+  <body>
+    <div class="root">
+      <header class="header root__section">
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          alt="mesto logo"
+          class="logo"
+        />
+      </header>
+      <div class="profile root__section">
+        <div class="user-info">
+          <div class="user-info__photo" style="background-image: url();"></div>
+          <div class="user-info__data">
+            <h1 class="user-info__name"></h1>
+            <p class="user-info__about"></p>
+            <button class="button button_size_small" id="edit">
+              Edit
+            </button>
+          </div>
+          <button class="button button_size_large user-info__button" id="add">
+            +
+          </button>
+        </div>
+      </div>
+      <div class="places-list root__section">
+        <!--! Здесь будут карточки! -->
+      </div>
+      <div class="popup">
+        <!--! Здесь будет содержимое Popup -->
+      </div>
+    </div>
+
+    <!-- Templates -->
+
+    <template id="card-template" style="display: none;">
+      <div class="place-card">
+        <div class="place-card__image" style="background-image: url();">
+          <button class="place-card__delete-icon"></button>
+        </div>
+        <div class="place-card__description">
+          <h3 class="place-card__name"></h3>
+          <div class="place-card__like">
+            <button class="place-card__like-icon"></button>
+            <p class="place-card__like-count">0</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="form-card-template" style="display: none;">
+      <div class="popup__content popup__content_type_form">
+        <img
+          src="<%=require('./images/close.svg')%>"
+          alt=""
+          class="popup__close"
+          id="card"
+        />
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" name="new" novalidate>
+          <input
+            type="text"
+            name="place"
+            class="popup__input"
+            required
+            minlength="2"
+            placeholder="Название"
+          />
+          <span id="place-error" class="error"></span>
+          <input
+            type="url"
+            name="link"
+            class="popup__input"
+            required
+            placeholder="Ссылка на картинку"
+          />
+          <span id="link-error" class="error"></span>
+          <button
+            class="button popup__button_type_add popup__button popup__button_disable"
+            disabled="true"
+          >
+            +
+          </button>
+        </form>
+      </div>
+    </template>
+
+    <template id="form-profile-template" style="display: none;">
+      <div class="popup__content popup__content_type_form">
+        <img
+          src="<%=require('./images/close.svg')%>"
+          alt=""
+          class="popup__close"
+          id="profile"
+        />
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__form" name="profile" novalidate>
+          <input
+            type="text"
+            name="username"
+            class="popup__input"
+            minlength="2"
+            required
+            placeholder="Имя"
+          />
+          <span id="username-error" class="error"></span>
+          <input
+            type="text"
+            name="about"
+            class="popup__input"
+            minlength="2"
+            required
+            placeholder="О себе"
+          />
+          <span id="about-error" class="error"></span>
+          <button
+            class="button popup__button_type_edit popup__button popup__button_enable"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </template>
+
+    <template id="image-template" style="display: none;">
+      <div class="popup__content popup__content_type_image">
+        <img
+          src="<%=require('./images/close.svg')%>"
+          alt=""
+          class="popup__close"
+          id="img"
+        />
+        <img src="" alt="" class="popup__image" />
+      </div>
+    </template>
+
+    <template id="avatar-template" style="display: none;">
+      <div class="popup__content popup__content_type_form">
+        <img
+          src="<%=require('./images/close.svg')%>"
+          alt=""
+          class="popup__close"
+          id="card"
+        />
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" name="avatar" novalidate>
+          <input
+            type="url"
+            name="url"
+            class="popup__input"
+            required
+            placeholder="Ссылка на аватар"
+          />
+          <span id="url-error" class="error"></span>
+          <button
+            class="button popup__button_type_edit popup__button popup__button_disable"
+            disabled="true"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </template>
+
+    <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
+  </body>
+</html>

@@ -1,4 +1,5 @@
-class Api {
+//import { serverUrl } from "./config.js";
+export default class Api {
   constructor(config) {
     this._baseUrl = config.baseUrl;
     this._pathCards = config.pathCards;

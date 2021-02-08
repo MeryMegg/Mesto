@@ -1,5 +1,23 @@
+import "../pages/style.css";
+import Api from "./Api.js";
+import Card from "./Card.js";
+import CardsList from "./CardsList.js";
+import { config } from "./config.js";
+import { errorMessages } from "./errorMessages.js";
+import FormAddCard from "./FormAddCard.js";
+import FormAvatar from "./FormAvatar.js";
+import FormEditProfile from "./FormEditProfile.js";
+import FormValidator from "./FormValidator.js";
+import Popup from "./Popup.js";
+import UserInfo from "./UserInfo.js";
+import ZoomImage from "./ZoomImage.js";
+
 (function () {
   /* Переменные */
+
+  const cardTemplate = document
+    .querySelector("#card-template")
+    .content.querySelector(".place-card");
 
   const popup = document.querySelector(".popup");
 
@@ -124,7 +142,8 @@
     createCard,
     createPopupImage,
     instanceApi,
-    renderLoading
+    renderLoading,
+    cardTemplate
   );
 
   /* Слушатели событий */
@@ -155,6 +174,7 @@
   instanceApi
     .getCards()
     .then((res) => {
+      console.log(res)
       cardsList.render(res);
     })
     .catch((err) => {
@@ -169,7 +189,7 @@
  * Работа принята, желаю вам успехов в дальнейшем обучении!
  *
  * Можно лучше:
- * Перенести this._renderLoading(false); в finally
+ * Перенести this._renderLoading(false); в finally +++
  */
 
 /*
@@ -181,16 +201,16 @@
 - в классе FormValidator захардкожены поля двух форм, хотя без этого можно легко обойтись ++++
 - разделить класс ContentPopup на несколько раздельны, чтобы они соответсвовали принципу единственной ответсвенности ++++
 - когда код расположен в разных файлах, его нужно  ++++
-  заключать в модули, т.к. если файлов будет много, то в разных
-  файлах могут появится функции или переменные с одинаковыми именами,
-  они будут переопределять друг друга. Модуль должен предоставлять
-  наружу только минимально необходимый api
-  Для создании модулей можно воспользоваться IIFE, подробнее:
-  https://learn.javascript.ru/closures-module
-  https://habr.com/ru/company/ruvds/blog/419997/
-  Нужно обернуть в модуль содержимое файла script.js
-  Оборачивание кода в IIFE не позволит глобально использовать переменные объявленные в нем и
-  и заставит явно передавать их туда, где они необходимы, как например в конструкторы классов
+	заключать в модули, т.к. если файлов будет много, то в разных
+	файлах могут появится функции или переменные с одинаковыми именами,
+	они будут переопределять друг друга. Модуль должен предоставлять
+	наружу только минимально необходимый api
+	Для создании модулей можно воспользоваться IIFE, подробнее:
+	https://learn.javascript.ru/closures-module
+	https://habr.com/ru/company/ruvds/blog/419997/
+	Нужно обернуть в модуль содержимое файла script.js
+	Оборачивание кода в IIFE не позволит глобально использовать переменные объявленные в нем и
+	и заставит явно передавать их туда, где они необходимы, как например в конструкторы классов
 
 Можно лучше:
 - this._createContentPopup не используется в классе CardsList +++
