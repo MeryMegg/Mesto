@@ -1,5 +1,5 @@
 # Mesto
-##### ссылка на gh pages: ++ ** https://merymegg.github.io/Mesto/ ** ++
+##### ссылка на gh pages: ++ https://merymegg.github.io/Mesto/ ++
 
 **Автор:** Скосырская Мария
 
