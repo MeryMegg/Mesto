@@ -1,5 +1,5 @@
 # Mesto
-##### ссылка на gh pages: ++ **  ** ++
+##### ссылка на gh pages: ++ ** https://merymegg.github.io/Mesto/ ** ++
 
 Версия: 0.0.1
 
