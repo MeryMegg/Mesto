@@ -1,0 +1,6 @@
+.popup__content_type {
+	max-width: 80vw;
+	max-height: 80vh;
+	position: relative;
+	box-sizing: border-box;
+}

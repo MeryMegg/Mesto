@@ -1,11 +1,9 @@
+@import url(./_type/copup__content_type_image.css);
+@import url(./_type/popup__content_type_form.css);
+
 .popup__content {
-  width: 430px;
-  min-height: 330px;
-  background-color: #fff;
-  border-radius: 10px;
   position: relative;
   box-sizing: border-box;
-  padding: 34px 36px;
 }
 
 @media screen and (max-width: 540px) {
